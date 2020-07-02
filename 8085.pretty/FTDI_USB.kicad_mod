@@ -1,4 +1,4 @@
-(module FTDI_USB (layer F.Cu) (tedit 5BA1016C)
+(module FTDI_USB (layer F.Cu) (tedit 5EFE3726)
   (descr "24-lead though-hole mounted DIP package, row spacing 15.24 mm (600 mils)")
   (tags "THT DIP DIL PDIP 2.54mm 15.24mm 600mil")
   (fp_text reference REF** (at 7.62 -7.41) (layer F.SilkS)
@@ -50,8 +50,13 @@
   (pad 10 thru_hole oval (at 0 22.86) (size 1.6 1.6) (drill 0.8) (layers *.Cu *.Mask))
   (pad 11 thru_hole oval (at 15.24 22.86) (size 1.6 1.6) (drill 0.8) (layers *.Cu *.Mask))
   (pad 12 thru_hole oval (at 15.24 20.32) (size 1.6 1.6) (drill 0.8) (layers *.Cu *.Mask))
-  (model ${KISYS3DMOD}/Package_DIP.3dshapes/DIP-24_W15.24mm.wrl
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x10_P2.54mm_Vertical.step
     (at (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
+  (model ${KISYS3DMOD}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x10_P2.54mm_Vertical.step
+    (offset (xyz 15.24 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
   )
