@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:CPU8085-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
@@ -42,7 +41,7 @@ U 1 1 5B8C0E93
 P 1450 3350
 F 0 "D1" V 1450 3200 50  0000 L CNN
 F 1 "1N4004" V 1495 3429 50  0001 L CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P10.16mm_Horizontal" H 1450 3350 50  0001 C CNN
+F 2 "Diode_SMD:D_MiniMELF" H 1450 3350 50  0001 C CNN
 F 3 "~" H 1450 3350 50  0001 C CNN
 	1    1450 3350
 	0    1    1    0   
@@ -359,32 +358,10 @@ Wire Wire Line
 	3400 2800 3400 2700
 Wire Wire Line
 	3400 2700 3500 2700
-$Comp
-L Device:R_Network07_US RN1
-U 1 1 5B9E4051
-P 2400 1500
-F 0 "RN1" H 2020 1454 50  0000 R CNN
-F 1 "10K" H 2020 1545 50  0000 R CNN
-F 2 "Resistor_THT:R_Array_SIP8" V 2875 1500 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/31509/csc.pdf" H 2400 1500 50  0001 C CNN
-	1    2400 1500
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	3350 2700 3350 2500
 Wire Wire Line
 	3350 2500 3500 2500
-$Comp
-L Device:R_Network05_US RN2
-U 1 1 5BA06FF5
-P 3250 1500
-F 0 "RN2" H 2970 1546 50  0000 R CNN
-F 1 "10K" H 2970 1455 50  0000 R CNN
-F 2 "Resistor_THT:R_Array_SIP6" V 3625 1500 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/31509/csc.pdf" H 3250 1500 50  0001 C CNN
-	1    3250 1500
-	-1   0    0    -1  
-$EndComp
 Text Label 5300 4400 0    50   ~ 0
 ~RD
 Text Label 5300 4500 0    50   ~ 0
@@ -394,31 +371,25 @@ Wire Wire Line
 $Comp
 L power:VCC #PWR020
 U 1 1 5BA1BE66
-P 3450 1300
-F 0 "#PWR020" H 3450 1150 50  0001 C CNN
-F 1 "VCC" H 3467 1473 50  0000 C CNN
-F 2 "" H 3450 1300 50  0001 C CNN
-F 3 "" H 3450 1300 50  0001 C CNN
-	1    3450 1300
+P 3350 1300
+F 0 "#PWR020" H 3350 1150 50  0001 C CNN
+F 1 "VCC" H 3367 1473 50  0000 C CNN
+F 2 "" H 3350 1300 50  0001 C CNN
+F 3 "" H 3350 1300 50  0001 C CNN
+	1    3350 1300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3350 2100 3500 2100
-Wire Wire Line
 	3150 1700 3150 2000
 Wire Wire Line
-	3050 1700 3050 2000
-Wire Wire Line
-	3350 1700 3350 2100
-Wire Wire Line
-	3250 1700 3250 2000
+	3350 1700 3350 2000
 Text Label 5300 4200 0    50   ~ 0
 IO~M
-Text Label 3250 1850 1    50   ~ 0
+Text Label 3150 1900 1    50   ~ 0
 IO~M
-Text Label 3150 1850 1    50   ~ 0
+Text Label 3250 1850 1    50   ~ 0
 ~RD
-Text Label 3050 1850 1    50   ~ 0
+Text Label 3350 1850 1    50   ~ 0
 ~WR
 $Comp
 L power:GND #PWR018
@@ -491,13 +462,6 @@ CLOCK
 Wire Wire Line
 	4900 5300 5150 5300
 Wire Wire Line
-	3450 1700 3750 1700
-Wire Wire Line
-	3750 1700 3750 1300
-Wire Wire Line
-	3750 1300 3450 1300
-Connection ~ 3450 1300
-Wire Wire Line
 	2700 1300 2700 1000
 Wire Wire Line
 	2600 1000 2600 1300
@@ -527,19 +491,19 @@ Text Label 2700 3300 0    50   ~ 0
 HOLD
 Text HLabel 2250 3100 0    50   Input ~ 0
 TRAP
-Text Label 2700 1300 1    50   ~ 0
+Text Label 2100 1300 1    50   ~ 0
 HOLD
-Text Label 2600 1300 1    50   ~ 0
+Text Label 2200 1250 1    50   ~ 0
 SID
-Text Label 2500 1300 1    50   ~ 0
+Text Label 2300 1300 1    50   ~ 0
 TRAP
 Text Label 2400 1300 1    50   ~ 0
 RST7_5
-Text Label 2300 1300 1    50   ~ 0
+Text Label 2500 1300 1    50   ~ 0
 RST6_5
-Text Label 2200 1300 1    50   ~ 0
+Text Label 2600 1300 1    50   ~ 0
 RST5_5
-Text Label 2100 1300 1    50   ~ 0
+Text Label 2700 1250 1    50   ~ 0
 INTR
 Wire Wire Line
 	4900 3600 9500 3600
@@ -566,8 +530,84 @@ RST7_5
 Wire Bus Line
 	9600 1500 9600 1300
 Connection ~ 9600 1500
-Wire Bus Line
-	5750 1250 5750 2700
+$Comp
+L Device:R_Pack04 RN1
+U 1 1 5BA35285
+P 2200 1500
+F 0 "RN1" H 1750 1550 50  0000 L CNN
+F 1 "10K" H 1750 1450 50  0000 L CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x1206" V 2475 1500 50  0001 C CNN
+F 3 "~" H 2200 1500 50  0001 C CNN
+	1    2200 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Pack04 RN2
+U 1 1 5BA352E9
+P 2600 1500
+F 0 "RN2" H 2800 1550 50  0000 L CNN
+F 1 "10K" H 2800 1450 50  0000 L CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x1206" V 2875 1500 50  0001 C CNN
+F 3 "~" H 2600 1500 50  0001 C CNN
+	1    2600 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Pack04 RN4
+U 1 1 5BA3533F
+P 3250 1500
+F 0 "RN4" H 3438 1546 50  0000 L CNN
+F 1 "10K" H 3438 1455 50  0000 L CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x1206" V 3525 1500 50  0001 C CNN
+F 3 "~" H 3250 1500 50  0001 C CNN
+	1    3250 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3050 1300 3150 1300
+Connection ~ 3350 1300
+Connection ~ 3150 1300
+Wire Wire Line
+	3150 1300 3250 1300
+Connection ~ 3250 1300
+Wire Wire Line
+	3250 1300 3350 1300
+Wire Wire Line
+	2000 1700 2100 1700
+Wire Wire Line
+	2100 1700 2200 1700
+Connection ~ 2100 1700
+Wire Wire Line
+	2200 1700 2300 1700
+Connection ~ 2200 1700
+Wire Wire Line
+	2300 1700 2400 1700
+Connection ~ 2300 1700
+Wire Wire Line
+	2400 1700 2500 1700
+Connection ~ 2400 1700
+Wire Wire Line
+	2500 1700 2600 1700
+Connection ~ 2500 1700
+Wire Wire Line
+	2600 1700 2700 1700
+Connection ~ 2600 1700
+Connection ~ 2700 1700
+Wire Wire Line
+	2000 1300 1700 1300
+Wire Wire Line
+	1700 1300 1700 1700
+Wire Wire Line
+	1700 1700 2000 1700
+Connection ~ 2000 1700
+Wire Wire Line
+	3050 2100 3050 1700
+Text Label 3150 2100 0    50   ~ 0
+READY
+Wire Wire Line
+	3050 2100 3500 2100
+Wire Wire Line
+	3250 1700 3250 2000
 Wire Wire Line
 	4900 2800 6900 2800
 Wire Wire Line
@@ -585,7 +625,9 @@ Wire Wire Line
 Wire Wire Line
 	4900 2100 6200 2100
 Wire Bus Line
-	9600 1500 9600 3500
+	5750 1250 5750 2700
 Wire Bus Line
 	8900 1300 8900 2250
+Wire Bus Line
+	9600 1500 9600 3500
 $EndSCHEMATC

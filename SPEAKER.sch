@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:CPU8085-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -38,17 +37,6 @@ F 3 "~" H 4500 2300 50  0001 C CNN
 	1    4500 2300
 	0    1    1    0   
 $EndComp
-$Comp
-L Transistor_BJT:2N3904 Q1
-U 1 1 5BD69858
-P 3450 2600
-F 0 "Q1" H 3641 2646 50  0000 L CNN
-F 1 "2N3904" H 3641 2555 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-92_Inline_Wide" H 3650 2525 50  0001 L CIN
-F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3904.pdf" H 3450 2600 50  0001 L CNN
-	1    3450 2600
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2350 2600 2800 2600
 Wire Wire Line
@@ -65,14 +53,9 @@ F 3 "" H 3550 2950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3550 2800 3550 2850
-Wire Wire Line
 	4100 2850 3550 2850
-Connection ~ 3550 2850
 Wire Wire Line
 	3550 2850 3550 2950
-Wire Wire Line
-	3550 2300 3550 2400
 $Comp
 L Connector_Generic:Conn_01x02 J2
 U 1 1 5BD69ABD
@@ -123,4 +106,20 @@ Wire Wire Line
 	4100 2300 4350 2300
 Wire Wire Line
 	4100 2750 4100 2850
+$Comp
+L Transistor_BJT:BC817 Q1
+U 1 1 5BACFC62
+P 3450 2600
+F 0 "Q1" H 3641 2646 50  0000 L CNN
+F 1 "BC817" H 3641 2555 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 3650 2525 50  0001 L CIN
+F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 3450 2600 50  0001 L CNN
+	1    3450 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3550 2300 3550 2400
+Wire Wire Line
+	3550 2850 3550 2800
+Connection ~ 3550 2850
 $EndSCHEMATC
