@@ -1,11 +1,24 @@
-# 8085 Computer with 32KB ROM, 32KB RAM, PIT and UART
+# 8085 Computer
 Rev A September 2018
 
 Based on original 2001 design
 
+Features
+============
+- 32KB ROM 
+  - Address [0x0000-7FFF]
+- 32KB RAM
+  - Address [0x8000-FFFF]
+- 82C54 PIT (Programmable Interval Timer) 
+  - Port [0x40-0x43]
+- UART 8250 or 16550 
+  - Port [0x60-0x67]
+  - Connected to FTDI Serial<->USB Adapter
+
 Notes
 ============
 - No voltage regulation on board, no protection of any kind
+- I made a somewhat working BASIC interpreter from scratch that runs on this hardware: [pfe_8085basic](https://github.com/hotkeysoft/pfe_8085basic)
 
 Changes from original design
 ============
