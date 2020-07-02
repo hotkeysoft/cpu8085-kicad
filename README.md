@@ -1,15 +1,14 @@
-CPU8085 Rev A
-September 2018 by Dominic Thibodeau
-
+# 8085 Computer with 32KB ROM, 32KB RAM, PIT and UART
+Rev A September 2018
 
 Based on original 2001 design
 
 Notes
------
+============
 - No voltage regulation on board, no protection of any kind
 
 Changes from original design
-----------------------------
+============
 - Changed crystal to 4MHz (CPU Freq = 2MHz)
 	- Original design ran at 1.8432MHz (CPU Freq = 921.6KHz)
 
@@ -33,4 +32,14 @@ Changes from original design
 		- On 8085, for IO Ports, port address is on both A[0..7] AND A[8..15]
 	- 3 inputs and 3 outputs remain on PLA, for future use	
 
+Images
+============
+### PCB Render
+![PCB Render](./img/top-render.jpg "PCB Render")
 
+### Schematics (pdf)
+- [Complete schematics](./img/schema.pdf)
+
+### PCB Images (svg)
+- [Top](./img/pcb-front.svg)
+- [Bottom](./img/pcb-back.svg)
