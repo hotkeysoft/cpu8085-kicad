@@ -47,8 +47,9 @@ Changes from original design
 
 Images
 ============
-### PCB Render
-![PCB Render](./img/top-render.jpg "PCB Render")
+PCB Render                                       |  Real PCB
+:-----------------------------------------------:|:--------------------------------------------:
+![PCB Render](./img/top-render.jpg "PCB Render") | ![Real PCB](./img/top-real.jpg "Real PCB")
 
 ### Schematics (pdf)
 - [Complete schematics](./img/schema.pdf)
