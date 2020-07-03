@@ -1,13 +1,10 @@
 # 8085 Computer
-Rev B September 2018
-
-Based on original 2001 design
+Rev C September 2018
 
 Features
 ============
-- 32KB ROM 
-  - Address [0x0000-7FFF]
-- 128KB RAM
+- 24KB ROM 
+- 128KB RAM (first 24KB fixed, rest accessible via 2x8KB banks)
 - USB-Serial IO (FT240x)
 - 82C54 PIT (Programmable Interval Timer) 
 - SN76489 Sound
@@ -15,9 +12,9 @@ Features
 Notes
 ============
 - Work in progress
-- See Rev A and B README
+- See [revA](https://github.com/hotkeysoft/cpu8085-kicad/tree/revA) and [revB](https://github.com/hotkeysoft/cpu8085-kicad/tree/revB) README 
 
-Changes from Rev B
+Changes from [Rev B](https://github.com/hotkeysoft/cpu8085-kicad/tree/revB)
 ============
 - Switched RAM to 128KB SMD
 - Replace UART + FT232RL to FT240x
@@ -35,7 +32,8 @@ Changes from Rev B
 
 Memory Map
 ============
-	- CPU Address divided in 8KB pages
+CPU Addresses are divided in 8KB pages
+
 ```	
 		PAGE 0 (ROM PAGE 0) 24KB (0x0000-0x5FFF)
 		PAGE 1 (ROM PAGE 1)
@@ -50,19 +48,22 @@ Memory Map
 	
 		BANK REGISTER
 		| 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+		|---------------|---------------|
 		| 3 | 2 | 1 | 0 | 3 | 2 | 1 | 0 |
 		|------BR1------|------BR0------|
-		|    (0..15)    |		 (0..15)    |
+		|    (0..15)    |    (0..15)    |
 		Selects from 128KB RAM page 0..15
 ```		
 
 Port Map
 ============
-Port Description
-0x40 PIT
-0x60 UART DATA (READ/WRITE)
-0x80 SOUND CHIP
-0xA0 BANK REGISTER
+
+|Port | Description            | 
+|-----|------------------------|
+|0x40 | PIT                    | 
+|0x60 | UART DATA (READ/WRITE) | 
+|0x80 | SOUND CHIP             | 
+|0xA0 | BANK REGISTER          | 
 
 Images
 ============
@@ -71,7 +72,3 @@ Images
 
 ### Schematics (pdf)
 - [Complete schematics](./img/schema.pdf)
-
-### PCB Images (svg)
-- [Top](./img/pcb-front.svg)
-- [Bottom](./img/pcb-back.svg)
