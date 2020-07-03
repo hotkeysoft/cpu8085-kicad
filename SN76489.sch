@@ -1,0 +1,213 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr USLetter 11000 8500
+encoding utf-8
+Sheet 6 6
+Title "SPEAKER"
+Date "2018-09-27"
+Rev "C"
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Device:R R2
+U 1 1 5BD69671
+P 4650 2750
+F 0 "R2" V 4443 2750 50  0000 C CNN
+F 1 "1K" V 4534 2750 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4580 2750 50  0001 C CNN
+F 3 "~" H 4650 2750 50  0001 C CNN
+	1    4650 2750
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 5BD696DD
+P 6200 2450
+F 0 "R3" V 5993 2450 50  0000 C CNN
+F 1 "33" V 6084 2450 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6130 2450 50  0001 C CNN
+F 3 "~" H 6200 2450 50  0001 C CNN
+	1    6200 2450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4050 2750 4500 2750
+Wire Wire Line
+	4800 2750 4950 2750
+$Comp
+L power:GND #PWR012
+U 1 1 5BD69986
+P 5250 3100
+F 0 "#PWR012" H 5250 2850 50  0001 C CNN
+F 1 "GND" H 5255 2927 50  0000 C CNN
+F 2 "" H 5250 3100 50  0001 C CNN
+F 3 "" H 5250 3100 50  0001 C CNN
+	1    5250 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5800 3000 5250 3000
+Wire Wire Line
+	5250 3000 5250 3100
+$Comp
+L Connector_Generic:Conn_01x02 J2
+U 1 1 5BD69ABD
+P 6800 2350
+F 0 "J2" H 6880 2342 50  0000 L CNN
+F 1 "SPEAKER" H 6880 2251 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 6800 2350 50  0001 C CNN
+F 3 "~" H 6800 2350 50  0001 C CNN
+	1    6800 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR024
+U 1 1 5BD69B3C
+P 6500 2150
+F 0 "#PWR024" H 6500 2000 50  0001 C CNN
+F 1 "VCC" H 6517 2323 50  0000 C CNN
+F 2 "" H 6500 2150 50  0001 C CNN
+F 3 "" H 6500 2150 50  0001 C CNN
+	1    6500 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6500 2150 6500 2350
+Wire Wire Line
+	6500 2350 6600 2350
+Wire Wire Line
+	6350 2450 6600 2450
+$Comp
+L Device:CP1 C?
+U 1 1 5BD6A575
+P 5800 2750
+AR Path="/5B8BFEAE/5BD6A575" Ref="C?"  Part="1" 
+AR Path="/5BD66E5D/5BD6A575" Ref="C10"  Part="1" 
+F 0 "C10" H 5915 2796 50  0000 L CNN
+F 1 "1uF" H 5915 2705 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 5800 2750 50  0001 C CNN
+F 3 "~" H 5800 2750 50  0001 C CNN
+	1    5800 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5800 2600 5800 2450
+Wire Wire Line
+	5250 2450 5800 2450
+Connection ~ 5800 2450
+Wire Wire Line
+	5800 2450 6050 2450
+Wire Wire Line
+	5800 2900 5800 3000
+$Comp
+L Transistor_BJT:BC817 Q1
+U 1 1 5BACFC62
+P 5150 2750
+F 0 "Q1" H 5341 2796 50  0000 L CNN
+F 1 "BC817" H 5341 2705 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 5350 2675 50  0001 L CIN
+F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 5150 2750 50  0001 L CNN
+	1    5150 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5250 2450 5250 2550
+Wire Wire Line
+	5250 3000 5250 2950
+Connection ~ 5250 3000
+$Comp
+L 8085:SN76489 U11
+U 1 1 5BABFE9A
+P 3600 3150
+F 0 "U11" H 3300 3850 50  0000 C CNN
+F 1 "SN76489" H 3800 3850 50  0000 C CNN
+F 2 "Package_DIP:DIP-16_W7.62mm_Socket" H 3150 2600 50  0001 C CNN
+F 3 "" H 3150 2600 50  0001 C CNN
+	1    3600 3150
+	1    0    0    -1  
+$EndComp
+Entry Wire Line
+	2700 2750 2800 2850
+Entry Wire Line
+	2700 2650 2800 2750
+Entry Wire Line
+	2700 2750 2800 2850
+Entry Wire Line
+	2700 2850 2800 2950
+Entry Wire Line
+	2700 2950 2800 3050
+Entry Wire Line
+	2700 3050 2800 3150
+Entry Wire Line
+	2700 3150 2800 3250
+Entry Wire Line
+	2700 3250 2800 3350
+Entry Wire Line
+	2700 3350 2800 3450
+Wire Wire Line
+	2800 2750 3150 2750
+Wire Wire Line
+	2800 2850 3150 2850
+Wire Wire Line
+	2800 2950 3150 2950
+Wire Wire Line
+	2800 3050 3150 3050
+Wire Wire Line
+	2800 3150 3150 3150
+Wire Wire Line
+	2800 3250 3150 3250
+Wire Wire Line
+	2800 3350 3150 3350
+Wire Wire Line
+	2800 3450 3150 3450
+Text Label 2900 2750 0    50   ~ 0
+D0
+Text Label 2900 2850 0    50   ~ 0
+D1
+Text Label 2900 2950 0    50   ~ 0
+D2
+Text Label 2900 3050 0    50   ~ 0
+D3
+Text Label 2900 3150 0    50   ~ 0
+D4
+Text Label 2900 3250 0    50   ~ 0
+D5
+Text Label 2900 3350 0    50   ~ 0
+D6
+Text Label 2900 3450 0    50   ~ 0
+D7
+Wire Bus Line
+	2700 2300 1950 2300
+Text Label 2700 2300 0    50   ~ 0
+D[0..7]
+Text HLabel 1950 2300 0    50   BiDi ~ 0
+D[0..7]
+Text HLabel 1900 2600 0    50   Input ~ 0
+CLOCK
+Text HLabel 1900 3650 0    50   Input ~ 0
+~SOUND
+Text HLabel 1900 3750 0    50   Input ~ 0
+~WR
+Wire Wire Line
+	3150 2600 1900 2600
+Wire Wire Line
+	1900 3650 3150 3650
+Wire Wire Line
+	1900 3750 3150 3750
+NoConn ~ 4050 2600
+Wire Notes Line
+	6150 2550 6150 2950
+Wire Notes Line
+	6150 2950 5600 2950
+Wire Notes Line
+	5600 2950 5600 2550
+Wire Notes Line
+	5600 2550 6150 2550
+Wire Bus Line
+	2700 2300 2700 3350
+$EndSCHEMATC

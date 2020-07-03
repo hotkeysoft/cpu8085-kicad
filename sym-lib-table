@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name 8085)(type Legacy)(uri ${KIPRJMOD}/8085.lib)(options "")(descr ""))
+  (lib (name MD-60S)(type Legacy)(uri ${KIPRJMOD}/MD-60S.lib)(options "")(descr ""))
 )

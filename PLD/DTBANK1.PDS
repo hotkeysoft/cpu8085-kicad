@@ -1,0 +1,145 @@
+;PALASM Design Description
+
+;---------------------------------- Declaration Segment ------------
+TITLE    Banking logic (1)
+PATTERN  
+REVISION 
+AUTHOR   Dominic Thibodeau
+COMPANY  
+DATE     17/09/18
+
+CHIP  DTBANK1 PALCE16V8
+
+;---------------------------------- PIN Declarations ---------------
+PIN  1          /MEM                               COMBINATORIAL;
+
+PIN  2..9       BR[0..7]                           COMBINATORIAL;
+
+PIN 10          GND;
+PIN 20          VCC;
+
+PIN 16..19      RAMA[13..16]                       COMBINATORIAL;
+
+PIN 15          /ROMCE                             COMBINATORIAL;
+PIN 14          /RAMCE                             COMBINATORIAL;
+
+PIN 11..13      A[13..15]                          COMBINATORIAL;
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+
+CASE ( A[15..13] )
+BEGIN
+  3..7:
+    BEGIN
+      RAMCE=MEM
+      ROMCE=0
+    END
+  OTHERWISE: 
+    BEGIN
+      RAMCE=0
+      ROMCE=MEM
+    END
+END
+
+CASE ( A[15..13] )
+BEGIN
+  3:
+    BEGIN
+    RAMA[16..13] = 0
+    END
+  4:
+    BEGIN
+    RAMA[16..13] = 1    
+    END
+  5:
+    BEGIN
+    RAMA[16..13] = 2          
+    END
+  6:
+  	BEGIN
+  	RAMA[16..13] = BR[3..0]
+  	END
+  7:
+    BEGIN
+    RAMA[16..13] = BR[7..4]
+    END
+END
+
+
+
+
+;----------------------------------- Simulation Segment ------------
+SIMULATION
+
+;CHECK RAMCE / ROMCE
+TRACE_ON MEM A[13..15] RAMCE ROMCE
+
+SETF MEM /A[15] /A[14] /A[13]
+CHECK /RAMCE ROMCE
+SETF MEM /A[15] /A[14] A[13]
+CHECK /RAMCE ROMCE
+SETF MEM /A[15] A[14] /A[13]
+CHECK /RAMCE ROMCE
+SETF MEM /A[15] A[14] A[13]
+CHECK RAMCE /ROMCE
+SETF MEM A[15] /A[14] /A[13]
+CHECK RAMCE /ROMCE
+SETF MEM A[15] /A[14] A[13]
+CHECK RAMCE /ROMCE
+SETF MEM A[15] A[14] /A[13]
+CHECK RAMCE /ROMCE
+SETF MEM A[15] A[14] A[13]
+CHECK RAMCE /ROMCE
+
+SETF /MEM /A[15] /A[14] /A[13]
+CHECK /RAMCE /ROMCE
+SETF /MEM /A[15] /A[14] A[13]
+CHECK /RAMCE /ROMCE
+SETF /MEM /A[15] A[14] /A[13]
+CHECK /RAMCE /ROMCE
+SETF /MEM /A[15] A[14] A[13]
+CHECK /RAMCE /ROMCE
+SETF /MEM A[15] /A[14] /A[13]
+CHECK /RAMCE /ROMCE
+SETF /MEM A[15] /A[14] A[13]
+CHECK /RAMCE /ROMCE
+SETF /MEM A[15] A[14] /A[13]
+CHECK /RAMCE /ROMCE
+SETF /MEM A[15] A[14] A[13]
+CHECK /RAMCE /ROMCE
+
+
+TRACE_OFF
+TRACE_ON MEM BR[0..7] A[13..15] RAMA[13..16]
+
+; PAGE 7
+SETF BR[7] BR[6] BR[5] BR[4] /BR[3] /BR[2] /BR[1] /BR[0] A[15] A[14] A[13]
+CHECK RAMA[16] RAMA[15] RAMA[14] RAMA[13]
+SETF /BR[7] BR[6] BR[5] BR[4] BR[3] BR[2] BR[1] BR[0] A[15] A[14] A[13]
+CHECK /RAMA[16] RAMA[15] RAMA[14] RAMA[13]
+SETF BR[7] /BR[6] BR[5] BR[4] BR[3] BR[2] BR[1] BR[0] A[15] A[14] A[13]
+CHECK RAMA[16] /RAMA[15] RAMA[14] RAMA[13]
+SETF BR[7] BR[6] /BR[5] BR[4] BR[3] BR[2] BR[1] BR[0] A[15] A[14] A[13]
+CHECK RAMA[16] RAMA[15] /RAMA[14] RAMA[13]
+SETF BR[7] BR[6] BR[5] /BR[4] BR[3] BR[2] BR[1] BR[0] A[15] A[14] A[13]
+CHECK RAMA[16] RAMA[15] RAMA[14] /RAMA[13]
+
+
+; PAGE 6
+
+SETF /BR[7] /BR[6] /BR[5] /BR[4] BR[3] BR[2] BR[1] BR[0] A[15] A[14] /A[13]
+CHECK RAMA[16] RAMA[15] RAMA[14] RAMA[13]
+SETF BR[7] BR[6] BR[5] BR[4] /BR[3] BR[2] BR[1] BR[0] A[15] A[14] /A[13]
+CHECK /RAMA[16] RAMA[15] RAMA[14] RAMA[13]
+SETF BR[7] BR[6] BR[5] BR[4] BR[3] /BR[2] BR[1] BR[0] A[15] A[14] /A[13]
+CHECK RAMA[16] /RAMA[15] RAMA[14] RAMA[13]
+SETF BR[7] BR[6] BR[5] BR[4] BR[3] BR[2] /BR[1] BR[0] A[15] A[14] /A[13]
+CHECK RAMA[16] RAMA[15] /RAMA[14] RAMA[13]
+SETF BR[7] BR[6] BR[5] BR[4] BR[3] BR[2] BR[1] /BR[0] A[15] A[14] /A[13]
+CHECK RAMA[16] RAMA[15] RAMA[14] /RAMA[13]
+
+TRACE_OFF
+
+
+;-------------------------------------------------------------------

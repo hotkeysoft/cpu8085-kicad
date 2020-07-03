@@ -1,0 +1,91 @@
+;PALASM Design Description
+
+;---------------------------------- Declaration Segment ------------
+TITLE    Glue logic (4) WR, RD, IO, selection
+PATTERN  
+REVISION 
+AUTHOR   Dominic Thibodeau
+COMPANY  
+DATE     27/09/18
+
+CHIP  dtglue4 PALCE16V8
+
+;---------------------------------- PORT MAP---------------
+;       Port            Description
+;       0x40						PIT
+;       0x60       			UART DATA (READ/WRITE)
+;       0x80            SOUND CHIP
+;       0xA0            BANK REGISTER
+
+;---------------------------------- PIN Declarations ---------------
+PIN  1          IO                                  COMBINATORIAL;
+PIN  2..4       A[15..13]                           COMBINATORIAL;
+PIN  5          /WR                                 COMBINATORIAL;
+PIN  6 				 	/RD																	COMBINATORIAL;
+
+PIN 10          GND;
+PIN 20          VCC;
+
+PIN 19          BANKR                               COMBINATORIAL;
+PIN 18          /PIT                                COMBINATORIAL;
+PIN 17          UART_WR                             COMBINATORIAL;
+PIN 16          /UART_RD                            COMBINATORIAL;
+PIN 15          /SOUND                              COMBINATORIAL;
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+
+PIT 		=   (/A[15] *  A[14] * /A[13]) * (IO)
+UART_WR =  (/A[15] *  A[14] *  A[13]) * (IO) * WR
+UART_RD =  (/A[15] *  A[14] *  A[13]) * (IO) * RD
+SOUND 	= ( A[15] * /A[14] * /A[13]) * (IO)
+BANKR = ( A[15] * /A[14] *  A[13]) * (IO) * (WR)
+
+;----------------------------------- Simulation Segment ------------
+SIMULATION
+
+TRACE_ON IO WR A[13..15] PIT UART_WR UART_RD SOUND BANKR
+
+SETF /A[15] /A[14] /A[13] /IO
+CHECK /PIT /UART_WR /UART_RD /SOUND /BANKR
+SETF /A[15] /A[14]  A[13] /IO
+CHECK /PIT /UART_WR /UART_RD /SOUND /BANKR
+SETF /A[15]  A[14] /A[13] /IO
+CHECK /PIT /UART_WR /UART_RD /SOUND /BANKR
+SETF /A[15]  A[14]  A[13] /IO
+CHECK /PIT /UART_WR /UART_RD /SOUND /BANKR
+SETF  A[15] /A[14] /A[13] /IO
+CHECK /PIT /UART_WR /UART_RD /SOUND /BANKR
+SETF  A[15] /A[14]  A[13] /IO
+CHECK /PIT /UART_WR /UART_RD /SOUND /BANKR
+SETF  A[15]  A[14] /A[13] /IO
+CHECK /PIT /UART_WR /UART_RD /SOUND /BANKR
+SETF  A[15]  A[14]  A[13] /IO
+CHECK /PIT /UART_WR /UART_RD /SOUND /BANKR
+
+; PIT 0x40
+SETF /A[15] A[14] /A[13] IO
+CHECK PIT /UART_WR /UART_RD /SOUND /BANKR
+
+; UART 0x60
+SETF /A[15] A[14]  A[13] IO /WR /RD
+CHECK /PIT /UART_WR /UART_RD /SOUND /BANKR
+SETF /A[15] A[14]  A[13] IO WR /RD
+CHECK /PIT UART_WR /UART_RD /SOUND /BANKR
+SETF /A[15] A[14]  A[13] IO /WR RD
+CHECK /PIT /UART_WR UART_RD /SOUND /BANKR
+
+; SOUND 0x80
+SETF A[15] /A[14] /A[13] IO
+CHECK /PIT /UART_WR /UART_RD SOUND /BANKR
+
+; BANKR 0xA0
+SETF A[15] /A[14]  A[13] IO /WR
+CHECK /PIT /UART_WR /UART_RD /SOUND /BANKR
+SETF A[15] /A[14]  A[13] IO WR
+CHECK /PIT /UART_WR /UART_RD /SOUND BANKR
+
+TRACE_OFF
+
+
+;-------------------------------------------------------------------

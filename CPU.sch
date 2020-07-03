@@ -5,103 +5,44 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 5 6
 Title "CPU"
-Date "2018-09-17"
-Rev "A"
+Date "2018-09-27"
+Rev "C"
 Comp ""
 Comment1 ""
 Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L Device:R_US R1
-U 1 1 5B8C097C
-P 950 3350
-F 0 "R1" H 1018 3396 50  0000 L CNN
-F 1 "75K" H 1018 3305 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 990 3340 50  0001 C CNN
-F 3 "~" H 950 3350 50  0001 C CNN
-	1    950  3350
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:VCC #PWR016
-U 1 1 5B8C0DD8
-P 950 3200
-F 0 "#PWR016" H 950 3050 50  0001 C CNN
-F 1 "VCC" H 967 3373 50  0000 C CNN
-F 2 "" H 950 3200 50  0001 C CNN
-F 3 "" H 950 3200 50  0001 C CNN
-	1    950  3200
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:D_ALT D1
-U 1 1 5B8C0E93
-P 1450 3350
-F 0 "D1" V 1450 3200 50  0000 L CNN
-F 1 "1N4004" V 1495 3429 50  0001 L CNN
-F 2 "Diode_SMD:D_MiniMELF" H 1450 3350 50  0001 C CNN
-F 3 "~" H 1450 3350 50  0001 C CNN
-	1    1450 3350
-	0    1    1    0   
-$EndComp
-Connection ~ 950  3200
-Connection ~ 950  3500
 NoConn ~ 4900 4000
 NoConn ~ 4900 4100
-Wire Wire Line
-	4900 4900 6850 4900
-Wire Wire Line
-	950  3500 1450 3500
 NoConn ~ 4900 5100
 NoConn ~ 4900 4800
 NoConn ~ 4900 4700
 $Comp
 L Switch:SW_DIP_x01 SW1
 U 1 1 5B8C4B7C
-P 950 3800
-F 0 "SW1" V 996 3670 50  0000 R CNN
-F 1 "RESET" V 905 3670 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 950 3800 50  0001 C CNN
-F 3 "" H 950 3800 50  0001 C CNN
-	1    950  3800
+P 750 3700
+F 0 "SW1" V 796 3570 50  0000 R CNN
+F 1 "RESET" V 705 3570 50  0000 R CNN
+F 2 "8085:Switch_Tactile_SMD_6x6mm_PTS645" H 750 3700 50  0001 C CNN
+F 3 "" H 750 3700 50  0001 C CNN
+	1    750  3700
 	0    -1   -1   0   
 $EndComp
 $Comp
 L power:GND #PWR017
 U 1 1 5B8C4C86
-P 950 4150
-F 0 "#PWR017" H 950 3900 50  0001 C CNN
-F 1 "GND" H 955 3977 50  0000 C CNN
-F 2 "" H 950 4150 50  0001 C CNN
-F 3 "" H 950 4150 50  0001 C CNN
-	1    950  4150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:CP1 C8
-U 1 1 5B8C4CF6
-P 1450 3800
-F 0 "C8" H 1565 3846 50  0000 L CNN
-F 1 "1uF" H 1565 3755 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 1450 3800 50  0001 C CNN
-F 3 "~" H 1450 3800 50  0001 C CNN
-	1    1450 3800
+P 750 4050
+F 0 "#PWR017" H 750 3800 50  0001 C CNN
+F 1 "GND" H 755 3877 50  0000 C CNN
+F 2 "" H 750 4050 50  0001 C CNN
+F 3 "" H 750 4050 50  0001 C CNN
+	1    750  4050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1450 3650 1450 3500
-Connection ~ 1450 3500
-Wire Wire Line
-	950  3200 1450 3200
-Wire Wire Line
-	1450 4100 950  4100
-Wire Wire Line
-	1450 3950 1450 4100
-Wire Wire Line
-	950  4150 950  4100
-Connection ~ 950  4100
+	750  4050 750  4000
+Connection ~ 750  4000
 Wire Wire Line
 	6300 2200 6300 1550
 Wire Wire Line
@@ -448,8 +389,6 @@ Wire Wire Line
 Wire Wire Line
 	3500 3500 3500 3300
 Wire Wire Line
-	1450 3500 3500 3500
-Wire Wire Line
 	3250 3300 2250 3300
 Wire Wire Line
 	2250 3200 3400 3200
@@ -511,8 +450,6 @@ Wire Wire Line
 	4900 3500 9500 3500
 Wire Wire Line
 	4900 3400 9500 3400
-Text HLabel 6850 4900 2    50   Output ~ 0
-RESET
 Wire Wire Line
 	4900 4400 6200 4400
 Wire Wire Line
@@ -608,6 +545,45 @@ Wire Wire Line
 	3050 2100 3500 2100
 Wire Wire Line
 	3250 1700 3250 2000
+Text HLabel 2250 3200 0    50   Input ~ 0
+SID
+Text HLabel 6850 4900 2    50   Output ~ 0
+RESET
+Wire Wire Line
+	4900 4900 6850 4900
+Wire Bus Line
+	5750 1250 5750 2700
+$Comp
+L 8085:MCP1319 U5
+U 1 1 5D756153
+P 1450 3400
+F 0 "U5" H 1200 3800 50  0000 C CNN
+F 1 "MCP1319T-46LE" H 1850 2950 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" H 1500 3400 50  0001 C CNN
+F 3 "" H 1500 3400 50  0001 C CNN
+	1    1450 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3500 3500 1800 3500
+NoConn ~ 1800 3300
+Wire Wire Line
+	1450 4000 1450 3850
+Wire Wire Line
+	750  4000 1450 4000
+Wire Wire Line
+	750  3400 1050 3400
+$Comp
+L power:VCC #PWR01
+U 1 1 5D76B360
+P 1450 2950
+F 0 "#PWR01" H 1450 2800 50  0001 C CNN
+F 1 "VCC" H 1467 3123 50  0000 C CNN
+F 2 "" H 1450 2950 50  0001 C CNN
+F 3 "" H 1450 2950 50  0001 C CNN
+	1    1450 2950
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
 	4900 2800 6900 2800
 Wire Wire Line
@@ -625,9 +601,7 @@ Wire Wire Line
 Wire Wire Line
 	4900 2100 6200 2100
 Wire Bus Line
-	5750 1250 5750 2700
+	9600 1500 9600 3500
 Wire Bus Line
 	8900 1300 8900 2250
-Wire Bus Line
-	9600 1500 9600 3500
 $EndSCHEMATC
