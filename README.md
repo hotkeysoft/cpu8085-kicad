@@ -17,11 +17,12 @@ Features
 
 Notes
 ============
-- This board was never produced. The FT232RL circuit was prototyped so in works in theory.
+- This board was never produced. The FT232RL circuit was prototyped so in works in theory. 
+  For a known working version see [Rev A](https://github.com/hotkeysoft/cpu8085-kicad/tree/revA)
 - No voltage regulation on board, no protection of any kind
 - I made a somewhat working BASIC interpreter from scratch that runs on this hardware: [pfe_8085basic](https://github.com/hotkeysoft/pfe_8085basic)
 
-Changes from Rev A
+Changes from [Rev A](https://github.com/hotkeysoft/cpu8085-kicad/tree/revA)
 ============
 - Changed FTDI-USB module with FT232RL
 
